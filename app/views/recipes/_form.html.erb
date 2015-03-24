@@ -1,0 +1,78 @@
+<% action = (recipe.persisted? ? recipe_url(recipe) : recipes_url) %>
+<% method = (recipe.persisted? ? :patch : :post) %>
+
+<form action="<%= action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <%= auth_token_input %>
+
+  <label for="recipe_name">Name:</label>
+  <input type="text" name="recipe[name]" id="recipe_name" value="<%= recipe.name %>">
+  <br>
+
+  <label for="recipe_food_preference">Preference</label>
+  <select name="recipe[food_preference]" id="recipe_food_preference">
+    <option>Please select</option>
+      <% FoodPreference.all.each do |pref|  %>
+      <% selected = recipe.food_preference_id == pref.id %>
+      <option <%= selected ? "selected" : "" %> value="<%= pref.id %>" >
+        <%= pref.name %>
+      </option>
+      <% end  %>
+    </select>
+  <br>
+
+  <label for="recipe_food_type">Type</label>
+  <select name="recipe[food_type]" id="recipe_food_type">
+    <option>Please select</option>
+    <% FoodType.all.each do |type|  %>
+    <% selected = recipe.food_type_id == type.id %>
+    <option <%= selected ? "selected" : "" %> value="<%= type.id %>" >
+      <%= type.name %>
+    </option>
+    <% end  %>
+  </select>
+  <br>
+
+  <label for="recipe_cuisine">Cuisine</label>
+  <select name="recipe[cuisine]" id="recipe_cuisine">
+    <option>Please select</option>
+    <% Cuisine.all.each do |cuisine|  %>
+    <% selected = recipe.cuisine_id == cuisine.id %>
+    <option <%= selected ? "selected" : "" %> value="<%= cuisine.id %>" >
+      <%= cuisine.name %>
+    </option>
+    <% end  %>
+  </select>
+  <br>
+
+  <label for="recipe_difficulty">Difficulty</label>
+  <select name="recipe[difficulty]" id="recipe_difficulty">
+    <option>Please select</option>
+    <% Recipe::DIFFICULTIES.each do |diff|  %>
+    <% selected = recipe.difficulty == diff %>
+    <option <%= selected ? "selected" : "" %> value="<%= diff %>" >
+      <%= diff %>
+    </option>
+    <% end  %>
+  </select>
+  <br>
+
+  <label for="recipe_cooking_time">Cooking time:</label>
+  <input type="text" name="recipe[cooking_time]" id="recipe_cooking_time"
+    value="<%= recipe.cooking_time %>">
+  <br>
+
+  <label for="recipe_ingredients">Ingredients:</label>
+  <textarea name="recipe[ingredients]" id="recipe_ingredients">
+    <%= recipe.ingredients %>
+  </textarea>
+  <br>
+
+  <label for="recipe_procedure">Procedure:</label>
+  <textarea name="recipe[procedure]" id="recipe_procedure">
+    <%= recipe.procedure %>
+  </textarea>
+  <br>
+
+  <input type="Submit">
+</form>

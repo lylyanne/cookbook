@@ -1,3 +1,3 @@
-class FoodType < ActiveRecord::Base
+class Cuisine < ActiveRecord::Base
   validates :name, presence: true
 end
