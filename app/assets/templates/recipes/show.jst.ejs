@@ -1,12 +1,16 @@
-<div class="well product-well">
-  <div class="row">
-
-    <div class="col-xs-7">
-      <h4 class="product-name"><%= recipe.escape("name") %>
-      </h4>
-
-      <div class="description-text"><%= recipe.escape("ingredients") %></div>
-      <p class="edit-product-link"></p>
+ <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="<%= recipe.escape("name") %>">
+      <div class="caption">
+        <h6><%= recipe.escape("name") %></h6>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a>
+        <a href="#">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </a>
+        <a href="#">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+        </p>
+      </div>
     </div>
   </div>
-</div>

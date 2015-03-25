@@ -1,7 +1,9 @@
 Cookbook.Views.RecipeAll = Backbone.CompositeView.extend({
   template: JST["recipes/all"],
 
-  initialize: function () {
+  initialize: function (options) {
+    this.food_preferences = options.food_preferences;
+    this.listenTo(this.food_preferences, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.render);
   },
 
@@ -18,9 +20,12 @@ Cookbook.Views.RecipeAll = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var renderedContent = this.template({recipes: this.collection});
+    var renderedContent = this.template({
+      recipes: this.collection,
+      food_preferences: this.food_preferences
+      });
     this.$el.html(renderedContent);
-    //this.renderRecipes();
+    this.renderRecipes();
     return this;
   }
 });

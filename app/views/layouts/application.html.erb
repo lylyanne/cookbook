@@ -21,21 +21,7 @@
 <% end %>
 </nav>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-3">
-      <div class="panel panel-primary" id="panels">
-        <div class="panel-heading">Food Preferences</div>
-        <% FoodPreference.all.each do |fp| %>
-        <p><%= fp.name %></p>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-xs-9">
-      <%= yield %>
-    </div>
-  </div>
-</div>
+  <%= yield %>
 
 </body>
 </html>

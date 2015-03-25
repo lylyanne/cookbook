@@ -11,8 +11,12 @@ Cookbook.Routers.Router = Backbone.Router.extend({
     var all_recipes = new Cookbook.Collections.Recipes();
     all_recipes.fetch();
 
+    var all_food_preferences = new Cookbook.Collections.FoodPreferences();
+    all_food_preferences.fetch();
+
     var index = new Cookbook.Views.RecipeAll({
-       collection: all_recipes
+       collection: all_recipes,
+       food_preferences: all_food_preferences
     });
 
     this._swapView(index);
