@@ -2,12 +2,16 @@
 <html>
 <head>
   <title>Cookbook</title>
+  <!-- Latest compiled and minified CSS -->
+  <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' %>
+  <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<nav class="navbar navbar-default">
 <% if current_user.nil? %>
   <%= link_to "Login", new_session_url %>
   <%= link_to "Create new user", new_user_url %>
@@ -15,8 +19,23 @@
   <%= current_user.email %>
   <%= button_to "Logout", session_url, method: :delete %>
 <% end %>
+</nav>
 
-<%= yield %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="panel panel-primary" id="panels">
+        <div class="panel-heading">Food Preferences</div>
+        <% FoodPreference.all.each do |fp| %>
+        <p><%= fp.name %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <%= yield %>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

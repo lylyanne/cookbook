@@ -6,4 +6,9 @@ class Recipe < ActiveRecord::Base
             :ingredients, :procedure, :user_id, presence: true
   validates :difficulty, inclusion: { in: DIFFICULTIES }
   validates :procedure, length: { maximum: 500 }
+
+  belongs_to :food_type
+  belongs_to :food_preference
+  belongs_to :cuisine
+  belongs_to :user
 end

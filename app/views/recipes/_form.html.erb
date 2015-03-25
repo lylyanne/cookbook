@@ -9,8 +9,8 @@
   <input type="text" name="recipe[name]" id="recipe_name" value="<%= recipe.name %>">
   <br>
 
-  <label for="recipe_food_preference">Preference</label>
-  <select name="recipe[food_preference]" id="recipe_food_preference">
+  <label for="recipe_food_preference_id">Preference</label>
+  <select name="recipe[food_preference_id]" id="recipe_food_preference_id">
     <option>Please select</option>
       <% FoodPreference.all.each do |pref|  %>
       <% selected = recipe.food_preference_id == pref.id %>
@@ -21,8 +21,8 @@
     </select>
   <br>
 
-  <label for="recipe_food_type">Type</label>
-  <select name="recipe[food_type]" id="recipe_food_type">
+  <label for="recipe_food_type_id">Type</label>
+  <select name="recipe[food_type_id]" id="recipe_food_type_id">
     <option>Please select</option>
     <% FoodType.all.each do |type|  %>
     <% selected = recipe.food_type_id == type.id %>
@@ -33,8 +33,8 @@
   </select>
   <br>
 
-  <label for="recipe_cuisine">Cuisine</label>
-  <select name="recipe[cuisine]" id="recipe_cuisine">
+  <label for="recipe_cuisine_id">Cuisine</label>
+  <select name="recipe[cuisine_id]" id="recipe_cuisine_id">
     <option>Please select</option>
     <% Cuisine.all.each do |cuisine|  %>
     <% selected = recipe.cuisine_id == cuisine.id %>

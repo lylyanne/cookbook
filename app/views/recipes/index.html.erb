@@ -1,1 +1,10 @@
-<h1>All Recipe</h1>
+<h1>All Recipes</h1>
+  <ul>
+    <% @recipes.each do |recipe| %>
+    <li><%= recipe.name %>
+      <%= link_to "View recipe", recipe_url(recipe) %>
+      <%= link_to "Edit recipe", edit_recipe_url(recipe) %>
+      <%= link_to "Delete recipe", recipe_url(recipe), method: :delete %>
+    </li>
+    <% end %>
+  </ul>
