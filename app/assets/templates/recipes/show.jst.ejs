@@ -1,15 +1,15 @@
  <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="..." alt="<%= recipe.escape("name") %>">
+      <img src="<%= recipe.escape("image") %>" alt="<%= recipe.escape("name") %>">
       <div class="caption">
         <h6><%= recipe.escape("name") %></h6>
         <p><a href="#" class="btn btn-primary" role="button">Button</a>
         <a href="#">
           <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
         </a>
-        <a href="#">
+        <button name="delete">
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        </a>
+        </button>
         </p>
       </div>
     </div>

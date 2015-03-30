@@ -28,6 +28,12 @@ class Api::RecipesController < ApplicationController
   def show
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    render :json => "success"
+  end
+
   private
   def recipe_params
     params.require(:recipe).permit(:name, :cooking_time, :difficulty,

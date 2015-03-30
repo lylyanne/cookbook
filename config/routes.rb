@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resources :recipes
     resources :food_preferences, only: :index
   end
+
+  resources :recipes, only: [:new, :create]
 end
