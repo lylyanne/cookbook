@@ -1,3 +1,8 @@
+<div class="modal fade" id="recipe-modal"
+tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="false">
+</div>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-3">
@@ -14,7 +19,12 @@
           Sorry, you don't have any recipes.
         </p>
       <% } else { %>
-        <div class="recipe"></div>
+        <div class="recipe group">
+          <a href="#" class="btn btn-primary new-recipe"
+          data-toggle="modal" data-target="#myModal"
+            role="button">Add new recipe</a>
+          <br>
+        </div>
       <% } %>
     </div>
   </div>

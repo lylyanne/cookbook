@@ -1,0 +1,85 @@
+<div class="modal-dialog"  id="myModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3><%= recipeView ? 'Update Recipe' : 'New Recipe' %></h3>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 recipe-form">
+              <form class="<%= recipeView ? 'recipe-update' : 'recipe-create' %>" >
+                <label for='name'>Recipe name:</label><br>
+                <input type='text' name='recipe[name]' id='recipe_name'
+                value='<%= recipe.escape('name') %>'>
+                <br>
+
+                <label for='recipe_image'>Recipe image:</label><br>
+                <img class="recipe-image" src="<%= recipe.escape("image") %>"
+                  width="100" height="100">
+                <button class="update-image btn btn-default" id="recipe_image">
+                  Pick image for recipe
+                </button>
+                <br>
+
+                <label for="recipe_food_preference_id">Preference</label>
+                <select name="recipe[food_preference_id]" class="form-control" id="recipe_food_preference_id">
+                  <option>Please select</option>
+                  <% food_preferences.each(function(pref) {  %>
+                  <% var selected = recipe.escape("food_preference_id") == pref.id %>
+                  <option <%= selected ? "selected" : "" %> value="<%= pref.escape("id") %>" >
+                    <%= pref.escape("name") %>
+                  </option>
+                  <% })  %>
+                </select>
+                <br>
+
+                <label for="recipe_food_type_id">Type</label>
+                <select name="recipe[food_type_id]" id="recipe_food_type_id">
+                  <option>Please select</option>
+                  <% food_types.each(function(type) {  %>
+                    <% var selected = recipe.escape("food_type_id") == type.id %>
+                    <option <%= selected ? "selected" : "" %> value="<%= type.escape("id") %>" >
+                      <%= type.escape("name") %>
+                    </option>
+                    <% })  %>
+                </select>
+                <br>
+
+                <label for="recipe_cuisine_id">Cuisine</label>
+                <select name="recipe[cuisine_id]" id="recipe_cuisine_id">
+
+                </select>
+                <br>
+
+                <label for="recipe_difficulty">Difficulty</label>
+                <select name="recipe[difficulty]" id="recipe_difficulty">
+
+                </select>
+                <br>
+
+                <label for="recipe_cooking_time">Cooking time:</label>
+                <input type="text" name="recipe[cooking_time]" id="recipe_cooking_time"
+                value="<%= recipe.escape("cooking_time") %>">
+                <br>
+
+                <label for="recipe_ingredients">Ingredients:</label>
+                <textarea name="recipe[ingredients]" class="form-control" rows="5"
+                  id="recipe_ingredients">
+                  <%= recipe.escape("ingredients") %>
+                </textarea>
+                <br>
+
+                <label for="recipe_procedure">Procedure:</label>
+                <textarea name="recipe[procedure]" class="form-control" rows="5"
+                  id="recipe_procedure">
+                  <%= recipe.escape("procedure") %>
+                </textarea>
+                <br>
+
+                <input type="submit" class="recipe-submit btn btn-primary">
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

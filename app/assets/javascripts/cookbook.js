@@ -4,7 +4,7 @@ window.Cookbook = {
   Views: {},
   Routers: {},
   Utils: {},
-  
+
   initialize: function() {
     var $rootEl =  $('#main');
 

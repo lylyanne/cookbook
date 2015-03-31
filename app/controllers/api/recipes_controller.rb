@@ -1,7 +1,7 @@
 class Api::RecipesController < ApplicationController
   def new
-    @recipe = Recipe.new
-    render json: @recipe
+    @recipe = Recipe.new(recipe_params)
+    render :json => @recipe
   end
 
   def create
@@ -20,12 +20,22 @@ class Api::RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
+    render :json => @recipe
   end
 
   def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update_attributes(recipe_params)
+      render :json => @recipe
+    else
+      render :json => @recipe.errors, :status => :unprocessable_entity
+    end
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
+    render :json => @recipe
   end
 
   def destroy

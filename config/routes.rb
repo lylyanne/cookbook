@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api, :defaults => { :format => :json } do
     resources :recipes
     resources :food_preferences, only: :index
+    resources :food_types, only: :index
   end
 
   resources :recipes, only: [:new, :create]

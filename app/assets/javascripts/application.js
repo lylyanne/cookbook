@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require cookbook
+//= require bootstrap-sprockets
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models
